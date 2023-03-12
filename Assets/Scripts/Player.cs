@@ -23,11 +23,13 @@ public class Player : MonoBehaviour
     private void Update()
     {
         //Moving
-        moveDir =(int)Input.GetAxisRaw("Horizontal");
+        moveDir =(int)Input.GetAxisRaw("Horizontal"); //using Unity's inputs
+       //acceleration
         if (moveDir != 0)
         {
             moveX = Mathf.MoveTowards(moveX, moveDir * moveSpeed, Time.deltaTime * acceleration);
         }
+        
         else 
         {
             moveX = Mathf.MoveTowards(moveX, moveDir * moveSpeed, Time.deltaTime * acceleration * 2.0f);
@@ -36,7 +38,7 @@ public class Player : MonoBehaviour
             grounded = Physics.CheckSphere(groundCheck.transform.position, 0.2f, LayerMask.GetMask("Ground"));
         }
         //Jumping
-        if (Input.GetButtonDown("Jump")&& grounded)
+        if (Input.GetButtonDown("Jump")&& grounded) //Jump only if on the ground
         {
             Jump();
 
