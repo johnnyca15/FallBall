@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     {
         //Moving
         moveDir =(int)Input.GetAxisRaw("Horizontal"); //using Unity's inputs
-       //acceleration
+       //smooth stopping
         if (moveDir != 0)
         {
             moveX = Mathf.MoveTowards(moveX, moveDir * moveSpeed, Time.deltaTime * acceleration);
@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
         
         else 
         {
+            //smooth moving
             moveX = Mathf.MoveTowards(moveX, moveDir * moveSpeed, Time.deltaTime * acceleration * 2.0f);
 
             //Checking if anything in Ground Layer in Sphere area with radius of .2
@@ -59,7 +60,16 @@ public class Player : MonoBehaviour
             //jump snap for midjump and not pressing jump
             Rigidbody.velocity += Vector3.up * Physics.gravity.y * Time.fixedDeltaTime * 5.0f;
         }
-            
+            //moving
         Rigidbody.velocity = new Vector3(moveX, Rigidbody.velocity.y, 0);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            
+            AudioBehavior.Instance.PlaySound(LandSound, 1.0f);
+        }
     }
 }

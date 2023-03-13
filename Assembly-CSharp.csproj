@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets/Scripts/Player.cs" />
     <Compile Include="Assets/Scripts/AudioBehavior.cs" />
+    <Compile Include="Assets/Scripts/CameraBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -794,6 +795,14 @@
     <ProjectReference Include="Unity.VisualScripting.State.csproj">
       <Project>{8314DC3E-4B63-C021-7150-617C9674B6E3}</Project>
       <Name>Unity.VisualScripting.State</Name>
+    </ProjectReference>
+    <ProjectReference Include="com.unity.cinemachine.editor.csproj">
+      <Project>{904EDC48-62E8-DEAB-F70D-2441A3644507}</Project>
+      <Name>com.unity.cinemachine.editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Cinemachine.csproj">
+      <Project>{F4931C9C-FF03-A345-A868-5A3050FD3E17}</Project>
+      <Name>Cinemachine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
